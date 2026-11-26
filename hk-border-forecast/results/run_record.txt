@@ -1,0 +1,22 @@
+REAL-DATA RUN RECORD
+====================
+Source: Hong Kong Immigration Department, Statistics on Daily Passenger Traffic
+Official CSV: https://www.immd.gov.hk/opendata/eng/transport/immigration_clearance/statistics_on_daily_passenger_traffic.csv
+Bundled snapshot: data/raw/statistics_on_daily_passenger_traffic.csv
+Snapshot source date range: 2021-01-01 through 2026-11-25
+Raw rows: 63,762
+Target: daily Mainland visitor arrivals, aggregated across control points
+Target series: 2023-02-06 through 2026-11-25 (1,389 consecutive days)
+Backtest: 12 expanding-window folds x 30 days = 360 out-of-sample predictions
+Forecast horizon: 7 days
+
+Model                       MAE        MAPE       RMSE
+Seasonal naive           24996.09    21.64%    40675.39
+Ridge Regression         21370.61    17.57%    29479.82
+Histogram Gradient Boost 18801.93    14.93%    29335.15
+
+Histogram Gradient Boost MAPE improvement vs seasonal naive: approximately 31%.
+Holiday-flagged dates MAPE: 34.3%; other dates MAPE: 13.8%.
+
+These are measured outputs from the bundled CSV snapshot, not synthetic/offline data.
+Results are specific to this snapshot and validation design and are not a guarantee of future forecast performance.
